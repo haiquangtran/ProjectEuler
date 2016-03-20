@@ -25,7 +25,7 @@ public class Q2 {
 			current = next;
 			next = prev + current;
 			
-			// sum of the even-valued terms
+			// sum the even-valued terms
 			if (isEven(prev)) {
 				answer += prev;
 			}
