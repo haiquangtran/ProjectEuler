@@ -1,6 +1,8 @@
 package problems;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -12,12 +14,34 @@ import java.math.BigInteger;
 public class P003 {
 
 	public static void main(String[] args) {
-		BigInteger number = new BigInteger("600851475143");
-		printAnswer(13195);
+		long n = 600851475143l;
+
+		printAnswer(n);
 	}
 
-	public static void printAnswer(int number) {
-		System.out.println(getLargestPrime(number));
+	public static void printAnswer(long n) {
+		ArrayList<Long> primes = getPrimeFactors(n);
+		
+		// Find largest
+		Collections.sort(primes, Collections.reverseOrder());
+		
+		System.out.println(primes.get(0));
+	}
+
+	public static ArrayList<Long> getPrimeFactors(long n) {
+		ArrayList<Long> primeFactors = new ArrayList<Long>();
+
+		// Prime factors
+		for (long i = 2; i <= n; i++) {
+			if (n % i == 0) {
+				primeFactors.add(i);
+
+				// Skip all non-primes
+				n = n/i;
+			}
+		}
+
+		return primeFactors;
 	}
 
 	/**
