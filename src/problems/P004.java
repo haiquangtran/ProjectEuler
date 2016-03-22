@@ -10,7 +10,7 @@ import java.math.BigInteger;
  * @author Hai
  *
  */
-public class Q4 {
+public class P004 {
 
 	public static void main(String[] args) {
 	

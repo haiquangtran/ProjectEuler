@@ -7,7 +7,7 @@ package problems;
  * 
  * @author Hai
  */
-public class Q2 {
+public class P002 {
 
 	public static void main(String[] args) {
 		int limit = 4000000;

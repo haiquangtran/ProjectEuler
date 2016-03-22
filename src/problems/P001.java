@@ -8,7 +8,7 @@ package problems;
  * 
  * @author Hai
  */
-public class Q1 {
+public class P001 {
 
 	public static void main(String[] args) {
 		printAnswer(1000);

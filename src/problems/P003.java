@@ -9,7 +9,7 @@ import java.math.BigInteger;
  * 
  * @author Hai
  */
-public class Q3 {
+public class P003 {
 
 	public static void main(String[] args) {
 		BigInteger number = new BigInteger("600851475143");
