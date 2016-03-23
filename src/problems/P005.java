@@ -10,12 +10,30 @@ package problems;
 public class P005 {
 
 	public static void main(String[] args) {
-		printAnswer();
-
+		int n = 20;
+		printAnswer(n);
 	}
 	
-	public static void printAnswer() {
+	public static void printAnswer(int n) {
+		System.out.println(getSmallestNumberDivisibleByNumbersFrom1To(n));
+	}
+	
+	public static int getSmallestNumberDivisibleByNumbersFrom1To(int n) {
+		int max = Integer.MAX_VALUE;
+		int smallestNumber = 0;
 		
+		for (int i = n; i <= max; i++) {
+			for (int j = n; j > 0; j--) {
+				if (i % j != 0) {
+					break;
+				} else if (j == 1) {
+					smallestNumber = i;
+					return smallestNumber;
+				}
+			}
+		}
+		
+		return smallestNumber;
 	}
 
 }
