@@ -28,5 +28,13 @@ package problems;
  *
  */
 public class P008 {
+	
+	public static void main(String[] args) {
 
+	}
+
+	public static void printAnswer() {
+		
+	}
+	
 }

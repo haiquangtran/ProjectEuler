@@ -22,7 +22,7 @@ public class P005 {
 		int max = Integer.MAX_VALUE;
 		int smallestNumber = 0;
 		
-		for (int i = n; i <= max; i++) {
+		for (int i = n; i <= max; i += n) {
 			for (int j = n; j > 0; j--) {
 				if (i % j != 0) {
 					break;
