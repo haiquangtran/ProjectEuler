@@ -32,16 +32,36 @@ package problems;
 public class P008 {
 
 	public static void main(String[] args) {
-
+		int n = 13;
+		printAnswer(n);
 	}
 
-	public static void printAnswer() {
-
+	public static void printAnswer(int n) {
+		System.out.println(getGreatestProductOfAdjacentDigits(n));
 	}
 
-	public static int getGreatestProductOfAdajacentNDigits(int n) {
+	/**
+	 * Gets the greatest product of the n adjacent digits. 
+	 * 
+	 * @param n number of adjacent digits
+	 * @return
+	 */
+	public static long getGreatestProductOfAdjacentDigits(int n) {
+		String numbers = getAllNumbers();
+		long max = 0;
 		
-		return 1;
+		for (int i = 0; i <= numbers.length() - n; i++) {
+			long total = 1;
+			for (int j = 0; j < n; j++) {
+				total *= Character.getNumericValue(numbers.charAt(i + j));
+				
+				if (total > max) {
+					max = total;
+				}
+			}
+		}
+		
+		return max;
 	}
 	
 	public static String getAllNumbers() {
