@@ -14,13 +14,29 @@ package problems;
 public class P009 {
 
 	public static void main(String[] args) {
-		printAnswer();
+		int n = 1000;
+		printAnswer(n);
 	}
 
-	public static void printAnswer() {
-		System.out.println(isPythTriplet(3, 4, 5));
+	public static void printAnswer(int n) {
+		System.out.println(getProductOfPythTripletSummingTo(n));
 	}
-	
+
+	public static int getProductOfPythTripletSummingTo(int n) {
+		int productOfPythTriplet = 0;
+		for (int c = n; c > 0; c--) {
+			for (int b = c; b > 0; b--) {
+				for (int a = b; a > 0; a--) {
+					if (a + b + c == n && isPythTriplet(a, b, c)) {
+						productOfPythTriplet = a * b * c;
+						return productOfPythTriplet;
+					}
+				}
+			}
+		}
+		return productOfPythTriplet;
+	}
+
 	public static boolean isPythTriplet(int a, int b, int c) {
 		if (a < b && a < c && b < c) {
 			if (Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)) {
@@ -29,5 +45,5 @@ public class P009 {
 		}
 		return false;
 	}
-	
+
 }
