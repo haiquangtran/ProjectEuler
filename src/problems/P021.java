@@ -18,10 +18,10 @@ public class P021 {
 	}
 	
 	public static void printAnswer(int n) {		
-		System.out.println(sumAmicableNumbersUnder(n));
+		System.out.println(getSumAmicableNumbersUnder(n));
 	}
 	
-	public static int sumAmicableNumbersUnder(int n) {
+	public static int getSumAmicableNumbersUnder(int n) {
 		int sum = 0;
 		for (int i = 1; i < n; i++) {
 			if (isAmicableNumbers(i)) {
