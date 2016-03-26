@@ -1,5 +1,7 @@
 package problems;
 
+import java.math.BigInteger;
+
 /**
  * n! means n x ( n - 1 ) x ... x 3 x 2 x 1
  *  
@@ -14,8 +16,30 @@ package problems;
 public class P020 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int n = 100;
+		printAnswer(n);
+	}
+	
+	public static void printAnswer(int n) {
+		System.out.println(getSumOfFactorial(n));
+	}
+	
+	public static int getSumOfFactorial(int n) {
+		int sum = 0;
+		String number = String.valueOf(getFactorial(n));
+		
+		for (int i = 0; i < number.length(); i++) {
+			sum += Character.getNumericValue(number.charAt(i));
+		}
+		return sum;
+	}
+	
+	public static BigInteger getFactorial(int n) {
+		BigInteger sum = BigInteger.ONE;
+		for (long i = n; i > 0; i--) {
+			sum = sum.multiply(BigInteger.valueOf(i));
+		}
+		return sum;
 	}
 
 }
