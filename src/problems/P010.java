@@ -10,53 +10,37 @@ package problems;
 public class P010 {
 
 	public static void main(String[] args) {
-		int n = 17;
+		int n = 2000000;
 		printAnswer(n);
 	}
 	
 	public static void printAnswer(int n) {
-		
+		System.out.println(getSumOfAllPrimesTo(n));
 	}
 	
-	/**
-	 * Helper method for Sieve of Eratosthenes.
-	 * Initializes an array from 2 to n with true values.
-	 * @param n
-	 * @return boolean array
-	 */
-	public static boolean[] getBooleanArray(int n) {
-		// where array index represents the number.
-		boolean[] primeNumbers = new boolean[n + 1];
+	public static long getSumOfAllPrimesTo(int n) {
+		long sum = 0;
 
-		for (int i = 2; i <= n; i++) {
-			primeNumbers[i] = true;
-		}
-
-		return primeNumbers;
-	}
-
-	/**
-	 * Get the sum of all prime numbers that is less than n by
-	 * using Sieve of Eratosthenes.
-	 */
-	public static int getLargestPrime(int n) {
-		boolean[] primeNumbers = getBooleanArray(n);
-		int largestPrime = 2;
-
-		for (int i = 2; i <= n; i++) {
-			if (primeNumbers[i]) {
-				// Find largest prime
-				if (n % i == 0) {
-					largestPrime = i;
-				}
-				// Mark multiples of i as non-primes
-				for (int j = i; j * i <= n; j++) {
-					primeNumbers[i * j] = false;
-				}
+		for (int i = 2; i < n; i++) {
+			if (isPrime(i)) {
+				sum += i;
 			}
 		}
 
-		return largestPrime;
+		return sum;
 	}
 	
+	private static boolean isPrime(int n) {
+		if (n == 2) {
+			return true;
+		} else if (n < 2 || n % 2 == 0) {
+			return false;
+		} 
+		for (int i = 3; i * i <= n; i += 2) {
+			if (n % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
