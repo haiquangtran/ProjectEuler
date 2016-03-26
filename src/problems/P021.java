@@ -11,5 +11,43 @@ package problems;
  *
  */
 public class P021 {
-
+	
+	public static void main(String[] args) {
+		int n = 10000;
+		printAnswer(n);
+	}
+	
+	public static void printAnswer(int n) {		
+		System.out.println(sumAmicableNumbersUnder(n));
+	}
+	
+	public static int sumAmicableNumbersUnder(int n) {
+		int sum = 0;
+		for (int i = 1; i < n; i++) {
+			if (isAmicableNumbers(i)) {
+				sum += i;
+			}
+		}
+		return sum;
+	}
+	
+	public static int getSumOfDivisors(int n) { 
+		int sum = 0;
+		for (int i = 1; i < n; i++) {
+			if (n % i == 0) {
+				sum += i;
+			}
+		}
+		return sum;
+	}
+	
+	public static boolean isAmicableNumbers(int i) {
+		int a = i, sumA = getSumOfDivisors(a);
+		int b = sumA, sumB = getSumOfDivisors(b);
+		if (a != b && a == sumB && b == sumA) {
+			return true;
+		}
+		return false;
+	}
+	
 }
