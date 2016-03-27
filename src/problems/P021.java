@@ -24,7 +24,7 @@ public class P021 {
 	public static int getSumAmicableNumbersUnder(int n) {
 		int sum = 0;
 		for (int i = 1; i < n; i++) {
-			if (isAmicableNumbers(i)) {
+			if (isAmicableNumber(i)) {
 				sum += i;
 			}
 		}
@@ -41,7 +41,7 @@ public class P021 {
 		return sum;
 	}
 	
-	public static boolean isAmicableNumbers(int i) {
+	public static boolean isAmicableNumber(int i) {
 		int a = i, sumA = getSumOfDivisors(a);
 		int b = sumA, sumB = getSumOfDivisors(b);
 		if (a != b && a == sumB && b == sumA) {
