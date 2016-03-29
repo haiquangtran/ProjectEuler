@@ -1,5 +1,11 @@
 package problems;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+;
+
 /**
  * Using names.txt (right click and 'Save Link/Target As...'), 
  * a 46K text file containing over five-thousand first names, begin by sorting it into alphabetical order. 
@@ -22,7 +28,57 @@ public class P022 {
 	}
 	
 	public static void printAnswer() {
+		String fileName = "p022_names.txt";
+		System.out.println(getTotalOfAllNames(fileName));
+	}
+	
+	public static long getTotalOfAllNames(String fileName) {
+		String[] allNames = getAllNamesFromFile(fileName);
+		long total = 0;
 		
+		// sort alphabetically
+		Arrays.sort(allNames);
+		
+		// go through all names
+		for (int i = 0; i < allNames.length; i++) {
+			String name = allNames[i];
+			int alphabeticalValue = 0;
+			
+			// go through letters
+			for (int j = 0; j < name.length(); j++) {
+				char letter = name.charAt(j);
+				if (letter != '"' && Character.isLetter(letter)) {
+					alphabeticalValue += (Character.getNumericValue(letter) - 9);
+				}
+			}
+			total += (i + 1) * alphabeticalValue;
+		}
+		
+		return total;
+	}
+	
+	public static String[] getAllNamesFromFile(String fileName) {
+		try {
+	        InputStream input = P022.class.getResourceAsStream("/assets/" + fileName);
+			BufferedReader br = new BufferedReader(new InputStreamReader(input));
+
+		    StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+
+		    while (line != null) {
+		        sb.append(line);
+		        sb.append(System.lineSeparator());
+		        line = br.readLine();
+		    }
+		    String allNames = sb.toString();
+			br.close();
+			
+			return allNames.split(",");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null; 
 	}
 
 }
