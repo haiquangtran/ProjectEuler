@@ -1,5 +1,7 @@
 package problems;
 
+import java.math.BigInteger;
+
 /**
  * The Fibonacci sequence is defined by the recurrence relation:
  * Fn = Fn-1 + Fn-2, where F1 = 1 and F2 = 1.
@@ -26,8 +28,32 @@ package problems;
 public class P025 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int digitLength = 1000;
+		printAnswer(digitLength);
+	}
 
+	public static void printAnswer(int digitLength) {
+		System.out.println(getFibonacciIndexOfDigitLength(digitLength));
+	}
+
+	public static int getFibonacciIndexOfDigitLength(int digitLength) {
+		int index = 0;
+		BigInteger current = new BigInteger("0"), next = new BigInteger("1"), result = new BigInteger("0");
+
+		// Invalid
+		if (digitLength <= 0) return -1;
+
+		while((result.toString()).length() != digitLength) {
+			result = next.add(current);
+			current = next;
+			next = result;
+			index++;
+		}
+
+		// The result is the digit length
+		index++;
+		
+		return index;
 	}
 
 }
